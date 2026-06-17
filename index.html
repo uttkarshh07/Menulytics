@@ -7,74 +7,76 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
+<header>
         <nav>
-            <div class="logo">Menulystic<span>AI</span></div>
+            <a href="#" class="logo">Menulystic<span>AI</span></a>
+            
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How it Works</a>
-                <a href="#restaurants">For Restaurants</a>
             </div>
-            <a href="#search" class="btn">Start Searching</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1>Find the Perfect Meal, Within Your Budget.</h1>
-            <p>Experience the future of dining. Menulystic AI analyzes millions of reviews, prices, and ratings to recommend the best restaurants and dishes tailored exactly to your cravings and wallet.</p>
-            
-            <div class="search-box">
-                <input type="text" placeholder="Location (e.g. Bhopal)">
-                <select>
-                    <option value="">Occasion</option>
-                    <option value="date">Date Night</option>
-                    <option value="group">Group Outing</option>
-                    <option value="solo">Solo Dining</option>
-                </select>
-                <input type="number" placeholder="Budget (₹)">
-                <button class="btn btn-secondary">Find Places</button>
+            <p>Experience the future of dining. Menulystic AI analyzes millions of reviews, prices, and ratings to recommend the best restaurants tailored exactly to your cravings and wallet.</p>
+            <!-- Modern Search Form -->
+            <div class="search-box" id="search">
+                <div class="input-group">
+                    <span class="input-icon">📍</span>
+                    <input type="text" id="location" placeholder="Location (e.g. Bhopal)">
+                </div>
+                
+                <div class="input-group">
+                    <span class="input-icon">💰</span>
+                    <input type="number" id="budget" placeholder="Budget (₹)">
+                </div>
+                
+                <div class="input-group">
+                    <span class="input-icon">👥</span>
+                    <input type="number" id="people" placeholder="No. of People" min="1">
+                </div>
+                <div class="input-group custom-dropdown-wrapper">
+                    <span class="input-icon">🍽️</span>
+                    <div class="custom-select" id="cuisine-display">Select Cuisine</div>
+                    <div class="custom-options hidden" id="cuisine-options">
+                        <div class="option" data-value="italian">Italian</div>
+                        <div class="option" data-value="indian">North Indian</div>
+                        <div class="option" data-value="chinese">Chinese</div>
+                    </div>
+                    <input type="hidden" id="cuisine" value="">
+                </div>
+
+                <div class="input-group full-width custom-dropdown-wrapper">
+                    <span class="input-icon">🥂</span>
+                    <div class="custom-select" id="occasion-display">Select Occasion</div>
+                    <div class="custom-options hidden" id="occasion-options">
+                        <div class="option" data-value="date">Date Night</div>
+                        <div class="option" data-value="group">Group Outing</div>
+                        <div class="option" data-value="solo">Solo Dining</div>
+                    </div>
+                    <input type="hidden" id="occasion" value="">
+                </div>
+
+                <!-- Trigger JS function -->
+                <button class="btn btn-secondary full-width" onclick="fetchRecommendations()">Find Places</button>
             </div>
         </div>
-        <div class="hero-image">
-            </div>
+        <div class="hero-image"></div>
     </section>
 
-    <section id="features" class="features">
+    <section id="results-section" class="results-section hidden">
         <div class="features-header">
-            <h2>Powered by Intelligent Analytics</h2>
-            <p>We go beyond basic star ratings. Our system uses advanced Natural Language Processing and dynamic scoring to guarantee your satisfaction.</p>
+            <h2>AI Recommendations</h2>
+            <p>Based on your criteria, here are the best matches with Value-for-Money and Sentiment scores.</p>
         </div>
-        
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <h3>Smart Budget Engine</h3>
-                <p>Input your budget and group size. We'll suggest specific restaurants and calculate an estimated total bill before you even walk in the door.</p>
+        <div class="results-grid" id="results-grid">
             </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🧠</div>
-                <h3>AI Review Intelligence</h3>
-                <p>Don't read 100 reviews. Our NLP engine summarizes customer sentiment, breaking down exactly what people think about the food, service, and ambiance.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">⭐</div>
-                <h3>Value-for-Money Score</h3>
-                <p>Find hidden gems. We calculate a unique VFM score based on price, sentiment, and popularity, so you always get the best bang for your buck.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🔥</div>
-                <h3>Trending Dish Analytics</h3>
-                <p>Not sure what to order? See the highest-rated and most talked-about dishes at any restaurant based on real-time popularity analytics.</p>
-            </div>
-        </div>
     </section>
     <section id="how-it-works" class="how-it-works">
-        <div class="how-header">
+        <div class="features-header">
             <h2>How Menulystic AI Works</h2>
             <p>Your perfect dining experience, curated in four simple steps.</p>
         </div>
@@ -86,18 +88,41 @@
             </div>
             <div class="step-card">
                 <div class="step-number">2</div>
-                <h3>AI Analyzes the Data</h3>
+                <h3>AI Analyzes Data</h3>
                 <p>Our NLP engine scans thousands of reviews, menus, and prices to find the perfect matches.</p>
             </div>
             <div class="step-card">
                 <div class="step-number">3</div>
-                <h3>Get Smart Recommendations</h3>
-                <p>Receive a curated list of restaurants, trending dishes, and an estimated total bill before you go.</p>
+                <h3>Get Recommendations</h3>
+                <p>Receive a curated list of restaurants, trending dishes, and an estimated total bill.</p>
             </div>
             <div class="step-card">
                 <div class="step-number">4</div>
-                <h3>Dine & Share Feedback</h3>
+                <h3>Dine & Share</h3>
                 <p>Enjoy your meal and submit your own ratings to make our AI even smarter for next time.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="features-header">
+            <h2>Powered by Intelligent Analytics</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Smart Budget Engine</h3>
+                <p>Input your budget and group size. We'll suggest specific restaurants and calculate an estimated total bill.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>AI Review Intelligence</h3>
+                <p>Our NLP engine summarizes customer sentiment, breaking down food, service, and ambiance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Value-for-Money Score</h3>
+                <p>Find hidden gems. We calculate a unique VFM score based on price, sentiment, and popularity.</p>
             </div>
         </div>
     </section>
@@ -106,5 +131,19 @@
         <p>&copy; 2026 Menulystic AI. All rights reserved.</p>
     </footer>
 
+    <script src="script.js"></script>
+    <div id="details-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Restaurant Name</h2>
+            <hr style="margin: 10px 0; border: 0; border-top: 1px solid #F5E6D3;">
+            
+            <div style="margin-top: 15px;">
+                <h3 style="color: var(--secondary-color);">🔥 Trending Dishes</h3>
+                <ul id="modal-dishes" style="margin-left: 20px; margin-top: 10px; color: var(--text-light);">
+                    </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
