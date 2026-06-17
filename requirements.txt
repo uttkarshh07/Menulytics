@@ -1,0 +1,14 @@
+pandas
+numpy
+requests
+beautifulsoup4
+selenium
+webdriver-manager
+python-dotenv
+fastapi
+uvicorn
+scikit-learn
+nltk
+vaderSentiment
+transformers
+joblib
