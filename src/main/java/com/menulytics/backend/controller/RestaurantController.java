@@ -109,4 +109,16 @@ public ApiResponse<List<Restaurant>> similar(
             service.getSimilarRestaurants(name)
     );
 }
+
+
+@GetMapping("/rating")
+public ApiResponse<List<Restaurant>> rating(
+        @RequestParam double min
+){
+    return new ApiResponse<>(
+            true,
+            "Rating filtered restaurants",
+            service.getByRating(min)
+    );
+}
 }

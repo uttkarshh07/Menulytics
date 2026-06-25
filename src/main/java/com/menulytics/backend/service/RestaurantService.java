@@ -261,4 +261,11 @@ public class RestaurantService {
 
             .toList();
     }
+
+    public List<Restaurant> getByRating(double min) {
+    return restaurantList.stream()
+            .filter(r -> r.getRating() >= min)
+            .sorted((a, b) -> Double.compare(b.getRating(), a.getRating()))
+            .toList();
+}
 }
